@@ -10,8 +10,8 @@
         // Create screen for phaser
         let config = {
             type: Phaser.AUTO,
-            width: 1050,
-            height: 600,
+            width: 1250,
+            height: 660,
             scene: {
                 preload: preload,
                 create: create,
@@ -21,20 +21,102 @@
 
         let game = new Phaser.Game(config);
 
+        //declaration of variables
+        let background = null;
+        let player1 = null;
+        let player2 = null;
+        let enemy1 = null;
+        let enemy2 = null;
+        let enemy1Speed = 3;
+        let enemy2Speed = 3;
+        let cursors;
+        let keyInputs;
+        let coin = [];
+
         // The preload function will load all resources into memory
         function preload() {
+
+            this.load.image("background","assets/gameBackground.png");
+            this.load.image("player1", "assets/player1.png");
+            this.load.image("player2", "assets/player2.png");
+            this.load.image("enemy1", "assets/enemy1.png");
+            this.load.image("enemy2", "assets/enemy2.png");
 
         }
 
         // The create function will load all our variables with their values i.e. characters, scores, lives etc
         function create() {
 
+            background = this.add.sprite(0,0,"background").setOrigin(0,0);
+            background.width = 800;
+            background.height = 600;
+
+            player1 = this.add.sprite(300,300,"player1");
+            player1.setScale(0.3);
+
+            player2 = this.add.sprite(400,300,"player2");
+            player2.setScale(0.3);
+
+            enemy1 = this.add.sprite(500,300,"enemy1");
+            enemy1.setScale(0.3);
+
+            enemy2 = this.add.sprite(600,300,"enemy2");
+            enemy2.setScale(0.3);
+
+            cursors = this.input.keyboard.createCursorKeys();
+
+            keyInputs = this.input.keyboard.createCursorKeys();
         }
 
         // The update function gets called for every frame of the game, this is where all the decision-making in the game take place
         function update() {
 
+            if(keyInputs.left.isDown){
+                player1.x = player1.x - 2;
+            }
+            if(keyInputs.right.isDown){
+                player1.x = player1.x + 2;
+            }
+            if(keyInputs.up.isDown){
+                player1.y = player1.y - 2;
+            }
+            if(keyInputs.down.isDown){
+                player1.y = player1.y + 2;
+            }
+
+            moveEnemy1(enemy1, 100, 120, 200, 250, enemy1Speed, 1);
+
+
         }
+
+        function moveEnemy1(enemy1, xL, yL, xR, yR, speed, direction)
+        {
+            if(enemy1.x<=xL)
+            {
+                enemy1.x=xL;
+                enemy1.y=enemy1.y+(enemy1Speed);
+            }
+
+            if (enemy1.y>=yR)
+            {
+                enemy1.y=yR;
+                enemy1.x=enemy1.x+(enemy1Speed);
+            }
+
+            if(enemy1.x>=xR)
+            {
+                enemy1.x=xR;
+                enemy1.y=enemy1.y-(enemy1Speed);
+            }
+
+            if (enemy1.y<=yL)
+            {
+                enemy1.y=yL;
+                enemy1.x=enemy1.x-(enemy1Speed);
+            }
+        }
+
+
     </script>
 </head>
     <body>
