@@ -7,18 +7,37 @@
     <script src="phaser.min.js"></script>
     <script src="phaser.js"></script>
     <script>
-        var game = new Phaser.Game (
-            1050,
-            600,
-            Phaser.AUTO,
-            '',
-            {
-                preload: preload, create: create, update: update
-            });
+        // Create screen for phaser
+        let config = {
+            type: Phaser.AUTO,
+            width: 1050,
+            height: 600,
+            scene: {
+                preload: preload,
+                create: create,
+                update: update
+            }
+        };
 
+        let game = new Phaser.Game(config);
+
+        // The preload function will load all resources into memory
+        function preload() {
+
+        }
+
+        // The create function will load all our variables with their values i.e. characters, scores, lives etc
+        function create() {
+
+        }
+
+        // The update function gets called for every frame of the game, this is where all the decision-making in the game take place
+        function update() {
+
+        }
     </script>
 </head>
-<body>
+    <body>
 
-</body>
+    </body>
 </html>
