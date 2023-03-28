@@ -10,8 +10,8 @@
         // Create screen for phaser
         let config = {
             type: Phaser.AUTO,
-            width: 1250,
-            height: 660,
+            width: 1027,
+            height: 617,
             scene: {
                 preload: preload,
                 create: create,
@@ -46,10 +46,13 @@
 
         // The create function will load all our variables with their values i.e. characters, scores, lives etc
         function create() {
-
-            background = this.add.sprite(0,0,"background").setOrigin(0,0);
-            background.width = 800;
-            background.height = 600;
+            let windowWidth = window.innerWidth;
+            let windowHeight = window.innerHeight;
+            background = this.add.sprite(0,0, 'background').setOrigin(0,0);
+            background.setDisplaySize(windowWidth, windowHeight);
+            background.setScale(1);
+           // background.width = 850;
+            // background.height = 700;
 
             player1 = this.add.sprite(300,300,"player1");
             player1.setScale(0.3);
