@@ -1,128 +1,100 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="level_1.js"></script>
-    <script src="phaser.min.js"></script>
-    <script src="phaser.js"></script>
-    <script>
-        // Create screen for phaser
-        let config = {
-            type: Phaser.AUTO,
-            width: 1027,
-            height: 617,
-            scene: {
-                preload: preload,
-                create: create,
-                update: update
-            }
-        };
-
-        let game = new Phaser.Game(config);
-
-        //declaration of variables
-        let background = null;
-        let player1 = null;
-        let player2 = null;
-        let enemy1 = null;
-        let enemy2 = null;
-        let enemy1Speed = 3;
-        let enemy2Speed = 3;
-        let cursors;
-        let keyInputs;
-        let coin = [];
-
-        // The preload function will load all resources into memory
-        function preload() {
-
-            this.load.image("background","assets/gameBackground.png");
-            this.load.image("player1", "assets/player1.png");
-            this.load.image("player2", "assets/player2.png");
-            this.load.image("enemy1", "assets/enemy1.png");
-            this.load.image("enemy2", "assets/enemy2.png");
-
-        }
-
-        // The create function will load all our variables with their values i.e. characters, scores, lives etc
-        function create() {
-            let windowWidth = window.innerWidth;
-            let windowHeight = window.innerHeight;
-            background = this.add.sprite(0,0, 'background').setOrigin(0,0);
-            background.setDisplaySize(windowWidth, windowHeight);
-            background.setScale(1);
-           // background.width = 850;
-            // background.height = 700;
-
-            player1 = this.add.sprite(300,300,"player1");
-            player1.setScale(0.3);
-
-            player2 = this.add.sprite(400,300,"player2");
-            player2.setScale(0.3);
-
-            enemy1 = this.add.sprite(500,300,"enemy1");
-            enemy1.setScale(0.3);
-
-            enemy2 = this.add.sprite(600,300,"enemy2");
-            enemy2.setScale(0.3);
-
-            cursors = this.input.keyboard.createCursorKeys();
-
-            keyInputs = this.input.keyboard.createCursorKeys();
-        }
-
-        // The update function gets called for every frame of the game, this is where all the decision-making in the game take place
-        function update() {
-
-            if(keyInputs.left.isDown){
-                player1.x = player1.x - 2;
-            }
-            if(keyInputs.right.isDown){
-                player1.x = player1.x + 2;
-            }
-            if(keyInputs.up.isDown){
-                player1.y = player1.y - 2;
-            }
-            if(keyInputs.down.isDown){
-                player1.y = player1.y + 2;
-            }
-
-            moveEnemy1(enemy1, 100, 120, 200, 250, enemy1Speed, 1);
-
-
-        }
-
-        function moveEnemy1(enemy1, xL, yL, xR, yR, speed, direction)
-        {
-            if(enemy1.x<=xL)
-            {
-                enemy1.x=xL;
-                enemy1.y=enemy1.y+(enemy1Speed);
-            }
-
-            if (enemy1.y>=yR)
-            {
-                enemy1.y=yR;
-                enemy1.x=enemy1.x+(enemy1Speed);
-            }
-
-            if(enemy1.x>=xR)
-            {
-                enemy1.x=xR;
-                enemy1.y=enemy1.y-(enemy1Speed);
-            }
-
-            if (enemy1.y<=yL)
-            {
-                enemy1.y=yL;
-                enemy1.x=enemy1.x-(enemy1Speed);
-            }
-        }
-
-
-    </script>
+    <meta charset="utf-8">
+    <title> GameTable </title>
 </head>
-    <body>
-
-    </body>
+<body>
+<caption title="Game Table"> Game Table </caption>
+<table border="5px" bordercolor = "red">
+    <tr>
+        <td >
+            <table>
+                <!--<tr> <th colspan="2"> M11 </th> </tr>!-->
+                <!--<tr> <th> placeholder </th> <th> placeholder </th> </tr>!-->
+                <!--<tr> <td>  </td>
+                    <td>  </td> </tr>!-->
+            </table>
+        </td>
+        <td >
+            <table>
+                <!--<tr> <th colspan="2"> M11 </th> </tr>!-->
+                <!--<tr> <th> placeholder </th> <th> placeholder </th> </tr>!-->
+                <!--<tr> <td>  </td>
+                    <td>  </td> </tr>!-->
+            </table>
+        </td>
+        <td>
+            <table >
+                <tr> <th> Game Table 2 </th> </tr>
+                <tr>
+                    <td>
+                        <!--Put game assets here
+                        <ul>
+                            <li>  </li>
+                            <li> </li>
+                            <li></li>
+                        </ul>
+                        !-->
+                    </td>
+                </tr>
+            </table> </td> </tr>
+    <tr>
+        <td >
+            <table>
+                <!--<tr> <th colspan="2"> M11 </th> </tr>!-->
+                <!--<tr> <th> placeholder </th> <th> placeholder </th> </tr>!-->
+                <!--<tr> <td>  </td>
+                    <td>  </td> </tr>!-->
+            </table>
+        </td>
+        <td >
+            <table>
+                <!--<tr> <th colspan="2"> M11 </th> </tr>!-->
+                <!--<tr> <th> placeholder </th> <th> placeholder </th> </tr>!-->
+                <!--<tr> <td>  </td>
+                    <td>  </td> </tr>!-->
+            </table>
+        </td>
+        <td>
+            <table >
+                <tr> <th> Game Table 2 </th> </tr>
+                <tr>
+                    <td>
+                        <!--Put game assets here
+                        <ul>
+                            <li>  </li>
+                            <li> </li>
+                            <li></li>
+                        </ul>
+                        !-->
+                    </td>
+                </tr>
+            </table> </td> </tr>
+    <tr>
+        <td>
+            <table>
+                <tr> <th colspan="2" align="center"> Game Table 3 </th> </tr>
+                <tr>
+                    <td> <a href=""> Game Table </a> </td>
+                   <!-- <td>  </td> </tr>!-->
+            </table> </td>
+        <td >
+            <table>
+                <!--<tr> <th colspan="2"> M11 </th> </tr>!-->
+                <!--<tr> <th> placeholder </th> <th> placeholder </th> </tr>!-->
+                <!--<tr> <td>  </td>
+                    <td>  </td> </tr>!-->
+                <td> <img src="assets/coin.png" height="120px" width="120px" > </td>
+            </table>
+        </td>
+        <td>
+            <table>
+                <tr> <th> Game Table 4 </th> </tr>
+                <tr>
+                    <td> <img src="assets/coin.png" height="120px" width="120px" > </td> </tr> </table>
+        </td>
+    </tr>
+</table>
+</body>
 </html>
