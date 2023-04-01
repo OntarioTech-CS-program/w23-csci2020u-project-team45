@@ -3,98 +3,123 @@
 <head>
     <meta charset="utf-8">
     <title> GameTable </title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <caption title="Game Table"> Game Table </caption>
-<table border="5px" bordercolor = "red">
+<table id="screen"><!-- screen border!-->
     <tr>
-        <td >
-            <table>
-                <!--<tr> <th colspan="2"> M11 </th> </tr>!-->
-                <!--<tr> <th> placeholder </th> <th> placeholder </th> </tr>!-->
-                <!--<tr> <td>  </td>
-                    <td>  </td> </tr>!-->
-            </table>
-        </td>
-        <td >
-            <table>
-                <!--<tr> <th colspan="2"> M11 </th> </tr>!-->
-                <!--<tr> <th> placeholder </th> <th> placeholder </th> </tr>!-->
-                <!--<tr> <td>  </td>
-                    <td>  </td> </tr>!-->
-            </table>
-        </td>
-        <td>
-            <table >
-                <tr> <th> Game Table 2 </th> </tr>
+    <td>
+    <table><!-- table that divides screen into 3!-->
+        <tr>
+        <td id="status">
+            <table id="statusBar">
                 <tr>
-                    <td>
-                        <!--Put game assets here
-                        <ul>
-                            <li>  </li>
-                            <li> </li>
-                            <li></li>
-                        </ul>
-                        !-->
-                    </td>
+                    <td id="statusBar"></td>
                 </tr>
-            </table> </td> </tr>
-    <tr>
-        <td >
-            <table>
-                <!--<tr> <th colspan="2"> M11 </th> </tr>!-->
-                <!--<tr> <th> placeholder </th> <th> placeholder </th> </tr>!-->
-                <!--<tr> <td>  </td>
-                    <td>  </td> </tr>!-->
             </table>
-        </td>
-        <td >
-            <table>
-                <!--<tr> <th colspan="2"> M11 </th> </tr>!-->
-                <!--<tr> <th> placeholder </th> <th> placeholder </th> </tr>!-->
-                <!--<tr> <td>  </td>
-                    <td>  </td> </tr>!-->
-            </table>
-        </td>
-        <td>
-            <table >
-                <tr> <th> Game Table 2 </th> </tr>
+        </td><!-- status column!-->
+        <td id="player1"><!-- player 1 screen table!-->
+            <table id="player1">
                 <tr>
-                    <td>
-                        <!--Put game assets here
-                        <ul>
-                            <li>  </li>
-                            <li> </li>
-                            <li></li>
-                        </ul>
-                        !-->
-                    </td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
                 </tr>
-            </table> </td> </tr>
-    <tr>
-        <td>
-            <table>
-                <tr> <th colspan="2" align="center"> Game Table 3 </th> </tr>
                 <tr>
-                    <td> <a href=""> Game Table </a> </td>
-                   <!-- <td>  </td> </tr>!-->
-            </table> </td>
-        <td >
-            <table>
-                <!--<tr> <th colspan="2"> M11 </th> </tr>!-->
-                <!--<tr> <th> placeholder </th> <th> placeholder </th> </tr>!-->
-                <!--<tr> <td>  </td>
-                    <td>  </td> </tr>!-->
-                <td> <img src="assets/coin.png" height="120px" width="120px" > </td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                </tr>
+                <tr>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                </tr>
+                <tr>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                </tr>
+                <tr>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                </tr>
+                <tr>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                </tr>
+                <table id="scoreBar">
+                <tr>
+                    <td id="scoreBar"></td>
+                    <td id="scoreBar"></td>
+                    <td id="scoreBar"></td>
+                </tr>
+                </table>
             </table>
         </td>
-        <td>
-            <table>
-                <tr> <th> Game Table 4 </th> </tr>
+        <td id="player2"><!-- screen border!-->
+            <table id="player2">
                 <tr>
-                    <td> <img src="assets/coin.png" height="120px" width="120px" > </td> </tr> </table>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                </tr>
+                <tr>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                </tr>
+                <tr>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                </tr>
+                <tr>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                </tr>
+                <tr>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                </tr>
+                <tr>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                </tr>
+                <table id="scoreBar">
+                    <tr>
+                        <td id="scoreBar"></td>
+                        <td id="scoreBar"></td>
+                        <td id="scoreBar"></td>
+                    </tr>
+                </table>
+
+            </table>
         </td>
-    </tr>
+        </tr>
+    </table>
+        </td>
+        </tr>
 </table>
+
+
 </body>
 </html>
