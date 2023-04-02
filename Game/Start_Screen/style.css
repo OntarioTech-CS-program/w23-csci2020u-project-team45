@@ -1,17 +1,19 @@
-.table, td, th {
-    border: 1px solid;
-    border-collapse: collapse;
-    width: 60%;
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
 }
 
-html, body, table {
-    width:100%;
-    height:40%;
-    margin:0px;
+.startBackground {
+    background-image: url("assets/startScreenBackground.png");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.game {
-    padding:1px;
-    width:10%;
-    text-align: center;
+.center {
+    display: block;
+    margin: auto;
+    width: 50%;
 }
