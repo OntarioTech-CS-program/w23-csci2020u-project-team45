@@ -63,3 +63,28 @@ html, body, table {
     width: 140px;
     height: 100px;
 }
+
+.placement {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+.coinPlacement {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+.enemy1Placement {
+    position: absolute;
+    top: 35px;
+    left: 40px;
+}
+.enemy2Placement {
+    position: absolute;
+    top: 35px;
+    left: 40px;
+}
+/*
+    Need to only have enemy's on some of the squares
+    Fareeha check positioning top and left
+*/
