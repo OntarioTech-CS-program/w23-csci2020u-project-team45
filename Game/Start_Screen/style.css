@@ -12,9 +12,16 @@ body, html {
     background-size: cover;
 }
 
-.center {
-    padding-top: 190%;
-    padding-left: 220%;
+.playGamePosition {
+    padding-top: 100%;
+    padding-left: 155%;
+    display: block;
+    margin: auto;
+}
+
+.gameRulesPosition {
+    padding-top: 100%;
+    padding-left: 50%;
     display: block;
     margin: auto;
 }
