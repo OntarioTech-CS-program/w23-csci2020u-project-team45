@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title> GameTable </title>
+    <link rel="stylesheet" href="level_1.css">
+</head>
+<body>
+<caption title="Game Table"> Game Table </caption>
+<table id="screen"><!-- screen border!-->
+    <tr>
+    <td>
+    <table><!-- table that divides screen into 3!-->
+        <tr>
+        <td id="status">
+            <table id="statusBar">
+                <tr>
+                    <td id="statusBar"></td>
+                </tr>
+            </table>
+        </td><!-- status column!-->
+        <td id="player1"><!-- player 1 screen table!-->
+            <table id="player1">
+                <tr>
+                    <td id="square">
+                        <div class="placement">
+                            <img class="coinPlacement" src="assets/coin.png" width="80" height="80" style="padding-left: 20%"/>
+                            <img class="enemy1Placement" onclick="enemyDisappear()" src="assets/enemy1.png" width="80" height="80" style="padding-left: 20%" style="padding-top: 15%"/>
+                        </div>
+                        <!--<img src="assets/coin.png" width="80" height="80" style="padding-left: 20%">!-->
+                    </td>
+                    <td id="square">
+                        <div class="placement">
+                            <img src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            <img class="enemy2Placement" onclick="enemyDisappear()" src="assets/enemy2.png" width="80" height="80" style="padding-left: 20%" style="padding-top: 15%"/>
+                        </div>
+                    </td>
+                    <td id="square">
+                        <div class="placement">
+                            <img src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            <img class="enemy3Placement" onclick="enemyDisappear()" src="assets/enemy1.png" width="80" height="80" style="padding-left: 20%" style="padding-top: 15%"/>
+                        </div>
+                    </td>
+                    <td id="square">
+                        <div class="placement">
+                            <img src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            <img class="enemy1Placement"onclick="enemyDisappear()" src="assets/enemy2.png" width="80" height="80" style="padding-left: 20%" style="padding-top: 15%"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="square"><img src="assets/diamond.png" width="80" height="80" style="padding-left: 20%"></td>
+                    <td id="square"><img src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%"></td>
+                    <td id="square"><img src="assets/diamond.png" width="80" height="80" style="padding-left: 20%"></td>
+                    <td id="square"><img src="assets/coin.png" width="80" height="80" style="padding-left: 20%"></td>
+                </tr>
+                <tr>
+                    <td id="square"><img src="assets/coin.png" width="80" height="80" style="padding-left: 20%"></td>
+                    <td id="square"><img src="assets/diamond.png" width="80" height="80" style="padding-left: 20%"></td>
+                    <td id="square"><img src="assets/coin.png" width="80" height="80" style="padding-left: 20%"></td>
+                    <td id="square"><img src="assets/diamond.png" width="80" height="80" style="padding-left: 20%"></td>
+                </tr>
+                <tr>
+                    <td id="square"><img src="assets/diamond.png" width="80" height="80" style="padding-left: 20%"></td>
+                    <td id="square"><img src="assets/coin.png" width="80" height="80" style="padding-left: 20%"></td>
+                    <td id="square"><img src="assets/diamond.png" width="80" height="80" style="padding-left: 20%"></td>
+                    <td id="square"><img src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%"></td>
+                </tr>
+                <tr>
+                    <td id="square"><img src="assets/coin.png" width="80" height="80" style="padding-left: 20%"></td>
+                    <td id="square"><img src="assets/diamond.png" width="80" height="80" style="padding-left: 20%"></td>
+                    <td id="square"><img src="assets/coin.png" width="80" height="80" style="padding-left: 20%"></td>
+                    <td id="square"><img src="assets/diamond.png" width="80" height="80" style="padding-left: 20%"></td>
+                </tr>
+                <tr>
+                    <td id="square"><img src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%"></td>
+                    <td id="square"><img src="assets/coin.png" width="80" height="80" style="padding-left: 20%"></td>
+                    <td id="square"><img src="assets/diamond.png" width="80" height="80" style="padding-left: 20%"></td>
+                    <td id="square"><img src="assets/coin.png" width="80" height="80" style="padding-left: 20%"></td>
+                </tr>
+                <table id="scoreBar">
+                <tr>
+                    <td id="scoreBar"><h4>Score: </h4></td>
+                    <td id="scoreBar"><h4>Lives: </h4></td>
+                    <td id="scoreBar"><img src="assets/player1.png" width="75" height="80" style="padding-left: 30%"></td>
+                </tr>
+                </table>
+            </table>
+        </td>
+        <td id="player2"><!-- screen border!-->
+            <table id="player2">
+                <tr>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                </tr>
+                <tr>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                </tr>
+                <tr>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                </tr>
+                <tr>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                </tr>
+                <tr>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                </tr>
+                <tr>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                    <td id="square"></td>
+                </tr>
+                <table id="scoreBar">
+                    <tr>
+                        <td id="scoreBar"></td>
+                        <td id="scoreBar"></td>
+                        <td id="scoreBar"></td>
+                    </tr>
+                </table>
+
+            </table>
+        </td>
+        </tr>
+    </table>
+        </td>
+        </tr>
+</table>
+
+
+</body>
+</html>
