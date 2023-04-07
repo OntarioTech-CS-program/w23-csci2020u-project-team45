@@ -74,4 +74,9 @@ public class GameRoom {
     public boolean inRoom(String playerID){
         return (players.containsKey(playerID));
     }
+
+    public void gameCoordinates(xCoordinate, yCoordinate){
+
+
+    }
 }
