@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/SnowbotRush/SnowbotRush.iml" filepath="$PROJECT_DIR$/SnowbotRush/SnowbotRush.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/w23-csci2020u-project-team45.iml" filepath="$PROJECT_DIR$/.idea/w23-csci2020u-project-team45.iml" />
     </modules>
   </component>

@@ -8,13 +8,24 @@ import java.util.Map;
  * You may add more method or attributes as needed
  * **/
 public class GameRoom {
+    private GameBoard gameBoard;
     private Map<String, Player> players = new HashMap<String, Player>(); // list of players playing the game
     private String winner; // for keeping track of who won the game
     private long timer; // for the game duration
     private Constants.Status gameStatus = Constants.Status.WAITING;
 
+    private static GameRoom gameRoom = null;
+
     // constructor to create game room
-    public GameRoom() {
+    private GameRoom(String level) {
+        this.gameBoard = new GameBoard(Constants.LEVEL.valueOf(level));
+    }
+
+    public static GameRoom getInstance() {
+        if (gameRoom == null) {
+            gameRoom = new GameRoom("EASY");
+        }
+        return gameRoom;
     }
 
     public Map<String, Player> getPlayers() {
@@ -75,7 +86,7 @@ public class GameRoom {
         return (players.containsKey(playerID));
     }
 
-    public void gameCoordinates(xCoordinate, yCoordinate){
+    public void gameCoordinates(int xCoordinate, int yCoordinate) {
 
 
     }
