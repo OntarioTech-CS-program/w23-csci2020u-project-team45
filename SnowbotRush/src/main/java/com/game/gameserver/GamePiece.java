@@ -23,6 +23,18 @@ public class GamePiece {
         this.claimed = false;
     }
 
+    public String getItem() {
+        return item;
+    }
+
+    public int getxPos() {
+        return xPos;
+    }
+
+    public int getyPos() {
+        return yPos;
+    }
+
     public boolean isClaimed() {
         return claimed;
     }

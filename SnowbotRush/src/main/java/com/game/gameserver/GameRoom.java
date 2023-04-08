@@ -8,24 +8,27 @@ import java.util.Map;
  * You may add more method or attributes as needed
  * **/
 public class GameRoom {
+    private String gameID;
     private GameBoard gameBoard;
     private Map<String, Player> players = new HashMap<String, Player>(); // list of players playing the game
     private String winner; // for keeping track of who won the game
     private long timer; // for the game duration
     private Constants.Status gameStatus = Constants.Status.WAITING;
-
-    private static GameRoom gameRoom = null;
+    private Constants.LEVEL level;
 
     // constructor to create game room
-    private GameRoom(String level) {
-        this.gameBoard = new GameBoard(Constants.LEVEL.valueOf(level));
+    public GameRoom(String gameID, String level) {
+        this.gameID = gameID;
+        this.level = Constants.LEVEL.valueOf(level);
+        this.gameBoard = new GameBoard(this.level);
     }
 
-    public static GameRoom getInstance() {
-        if (gameRoom == null) {
-            gameRoom = new GameRoom("EASY");
-        }
-        return gameRoom;
+    public String getGameID() {
+        return gameID;
+    }
+
+    public GameBoard getGameBoard() {
+        return gameBoard;
     }
 
     public Map<String, Player> getPlayers() {
@@ -69,9 +72,10 @@ public class GameRoom {
     public int getNumOfPlayers() {
         return players.size();
     }
-    public void addPlayer(Player player) {
-        String playerID = player.getId();
+
+    public void addPlayer(String playerID, String playerName) {
         if(!inRoom(playerID)) {
+            Player player = new Player(playerID, playerName);
             this.players.put(playerID, player);
         }
     }
@@ -86,8 +90,11 @@ public class GameRoom {
         return (players.containsKey(playerID));
     }
 
-    public void gameCoordinates(int xCoordinate, int yCoordinate) {
-
-
+    public boolean isLevel(String level) {
+        boolean blnMatch = false;
+        if (this.level.name().equalsIgnoreCase(level)) {
+            blnMatch = true;
+        }
+        return blnMatch;
     }
 }

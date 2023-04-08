@@ -25,4 +25,8 @@ public class GameBoard {
             row++;
         }
     }
+
+    public GamePiece[][] getGamePieces() {
+        return gamePieces;
+    }
 }
