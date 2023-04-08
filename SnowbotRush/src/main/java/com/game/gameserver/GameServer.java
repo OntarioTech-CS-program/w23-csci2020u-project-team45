@@ -13,10 +13,11 @@ import java.util.Map;
 public class GameServer {
 
     private Map<String, String> players = new HashMap<String, String>();
+    private GameRoom gameRoom = GameRoom.getInstance();
 
     @OnOpen
     public void open(String comm, Session session) throws IOException, EncodeException {
-        int numOfPlayers = GameResource.gameRoom.getNumOfPlayers();
+        int numOfPlayers = gameRoom.getNumOfPlayers();
         if (numOfPlayers < Constants.MAX_PLAYERS) {
             JSONObject jsonmsg = new JSONObject(comm);
             String type = (String) jsonmsg.get("action");
@@ -24,8 +25,8 @@ public class GameServer {
             String name = (String) jsonmsg.get("name");
             if (Constants.Actions.JOIN.equals(Constants.Actions.valueOf(type))) {
                 Player player = new Player(id, name);
-                GameResource.gameRoom.addPlayer(player);
-                numOfPlayers = GameResource.gameRoom.getNumOfPlayers();
+                gameRoom.addPlayer(player);
+                numOfPlayers = gameRoom.getNumOfPlayers();
                 if (numOfPlayers == Constants.MAX_PLAYERS) {
                     for (Session peer : session.getOpenSessions()) {
                         peer.getBasicRemote().sendText("{\"type\": \"info\", \"message\":\"Get Ready, game is about to start.\"}");

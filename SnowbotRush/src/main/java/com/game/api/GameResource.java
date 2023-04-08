@@ -9,10 +9,6 @@ import jakarta.ws.rs.core.Response;
 
 @Path("/status")
 public class GameResource {
-
-    public static GameRoom gameRoom = new GameRoom();
-
-    // TO DO ...
     @GET
     @Produces("application/json")
     public Response status() {
@@ -20,7 +16,7 @@ public class GameResource {
         //need to create object to build
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            val = objectMapper.writeValueAsString(gameRoom);
+            val = objectMapper.writeValueAsString(GameRoom.getInstance());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
