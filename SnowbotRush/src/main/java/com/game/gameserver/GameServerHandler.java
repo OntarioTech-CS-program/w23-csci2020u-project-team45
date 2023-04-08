@@ -44,7 +44,7 @@ public class GameServerHandler implements Runnable {
                     }
                     data += "{";
                     data += "\"piece\": \"" + piece + "\",";
-                    data += "\"row\": \"" + x + "\"";
+                    data += "\"row\": \"" + x + "\",";
                     data += "\"column\": \"" + y + "\"";
                     data += "}";
                 }

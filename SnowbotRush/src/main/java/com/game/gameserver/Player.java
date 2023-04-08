@@ -1,8 +1,5 @@
 package com.game.gameserver;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * This class represents the data you may need to store about a Chat room
  * You may add more method or attributes as needed
@@ -42,7 +39,7 @@ public class Player {
     }
 
     public void setScore(long score) {
-        this.score = score;
+        this.score += score;
     }
 
     public int getLives() {
@@ -50,6 +47,12 @@ public class Player {
     }
 
     public void setLives(int lives) {
-        this.lives = lives;
+        if (this.lives < Constants.START_LIVES) {
+            this.lives += lives;
+        }
+    }
+
+    public boolean hasLives() {
+        return (lives>0);
     }
 }

@@ -39,6 +39,9 @@ public class GamePiece {
         return claimed;
     }
 
+    public void setClaimed() {
+        this.claimed = true;
+    }
     public int getValue() {
         return value;
     }

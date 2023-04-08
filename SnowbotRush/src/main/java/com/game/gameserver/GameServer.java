@@ -1,6 +1,5 @@
 package com.game.gameserver;
 
-import com.game.api.GameResource;
 import jakarta.websocket.*;
 import jakarta.websocket.server.ServerEndpoint;
 import org.json.JSONObject;
@@ -8,7 +7,6 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.*;
@@ -44,6 +42,7 @@ public class GameServer {
                 while (iterator.hasNext()) {
                     ((GameServerHandler)iterator.next()).run();
                 }
+                gameRoom.setGameStatus(Constants.Status.START);
             } else {
                 session.getBasicRemote().sendText("{\"type\": \"info\", \"message\":\"Waiting For Player 2 To Connect...\"}");
             }
@@ -66,24 +65,37 @@ public class GameServer {
         String userID = session.getId(); // my id
         JSONObject jsonmsg = new JSONObject(comm);
         String type = (String) jsonmsg.get("type");
-        String message = (String) jsonmsg.get("msg");
+        String error = null;
 
-        if (!"".equalsIgnoreCase(message)) {
-            if (players.containsKey(userID)) { // not their first message
-                String username = players.get(userID);
-                for (Session peer : session.getOpenSessions()) {
-                    peer.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"(" + username + "): " + message + "\"}");
-                }
-            } else { //first message is their username
-                players.put(userID, message);
-                session.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"(Server ): Welcome, " + message + "!\"}");
-                for (Session peer : session.getOpenSessions()) {
-                    // only announce to those in the same room as me, excluding myself
-                    if (!peer.getId().equals(userID)) {
-                        peer.getBasicRemote().sendText("{\"type\": \"chat\", \"message\":\"(Server): " + message + " joined the chat room.\"}");
+        if ("select".equalsIgnoreCase(type)) {
+            String gameID = players.get(userID);
+            if (gameID != null) {
+                GameRoom gameRoom = getGameRoom(gameID);
+                if (gameRoom != null && gameRoom.getPlayer(userID)!=null) {
+                    if (Constants.Status.START.equals(gameRoom.getGameStatus())) {
+                        String row = (String) jsonmsg.get("row");
+                        String column = (String) jsonmsg.get("column");
+                        int[] selection = new int[2];
+                        selection[0] = Integer.parseInt(row);
+                        selection[1] = Integer.parseInt(column);
+                        PlayerServerHandler psh = new PlayerServerHandler(gameRoom, selection, session);
+                        psh.run();
+                    } else if (Constants.Status.WAITING.equals(gameRoom.getGameStatus())) {
+                        error = "{\"type\": \"error\", \"message\":\"Please wait for player to connect.\"}";
+                    } else {
+                        error = "{\"type\": \"error\", \"message\":\"Please join a game to play.\"}";
                     }
+                } else {
+                    error = "{\"type\": \"error\", \"message\":\"Please join a game to play.\"}";
                 }
+            } else {
+                error = "{\"type\": \"error\", \"message\":\"Please join a game to play.\"}";
             }
+        } else {
+            error = "{\"type\": \"error\", \"message\":\"Command not recognized.\"}";
+        }
+        if (error != null) {
+            session.getBasicRemote().sendText(error);
         }
     }
 

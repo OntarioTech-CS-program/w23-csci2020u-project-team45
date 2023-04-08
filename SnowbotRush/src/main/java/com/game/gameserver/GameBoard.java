@@ -29,4 +29,20 @@ public class GameBoard {
     public GamePiece[][] getGamePieces() {
         return gamePieces;
     }
+
+    public GamePiece getGamePiece (int row, int column) {
+        return gamePieces[row][column];
+    }
+
+    public boolean isGameOver() {
+        boolean blnGameOver = true;
+        for (int row=0; row<gamePieces.length && !blnGameOver; row++) {
+            for (int column=0; column<gamePieces[row].length && !blnGameOver; column++) {
+                if (!gamePieces[row][column].isClaimed()) {
+                    blnGameOver = false;
+                }
+            }
+        }
+        return blnGameOver;
+    }
 }

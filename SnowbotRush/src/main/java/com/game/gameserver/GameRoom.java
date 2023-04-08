@@ -1,7 +1,6 @@
 package com.game.gameserver;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * This class represents the data you may need to store about a Chat room
@@ -12,7 +11,6 @@ public class GameRoom {
     private GameBoard gameBoard;
     private Map<String, Player> players = new HashMap<String, Player>(); // list of players playing the game
     private String winner; // for keeping track of who won the game
-    private long timer; // for the game duration
     private Constants.Status gameStatus = Constants.Status.WAITING;
     private Constants.LEVEL level;
 
@@ -21,6 +19,7 @@ public class GameRoom {
         this.gameID = gameID;
         this.level = Constants.LEVEL.valueOf(level);
         this.gameBoard = new GameBoard(this.level);
+        this.winner = null;
     }
 
     public String getGameID() {
@@ -41,14 +40,6 @@ public class GameRoom {
 
     public void setWinner(String winner) {
         this.winner = winner;
-    }
-
-    public long getTimer() {
-        return timer;
-    }
-
-    public void setTimer(long timer) {
-        this.timer = timer;
     }
 
     public Constants.Status getGameStatus() {
@@ -97,4 +88,39 @@ public class GameRoom {
         }
         return blnMatch;
     }
+
+    public boolean hasWinner() {
+        boolean blnFound = false;
+        if (winner!=null) {
+            blnFound = true;
+        } else {
+            List<Player> users = new ArrayList<>();
+            for (Player player : players.values()) {
+                if (player.hasLives()) {
+                    users.add(player);
+                }
+            }
+            if (users.size() == 1) {
+                blnFound = true;
+                gameStatus = Constants.Status.END;
+                Player player = users.get(0);
+                winner = player.getId();
+            } else if (gameBoard.isGameOver()) {
+                blnFound = true;
+                gameStatus = Constants.Status.END;
+                long highscore = 0;
+                Iterator playerIterator = players.values().iterator();
+                while (playerIterator.hasNext()) {
+                    Player player = (Player) playerIterator.next();
+                    if (highscore < player.getScore()) {
+                        winner = player.getId();
+                        highscore = player.getScore();
+                    }
+                }
+            }
+        }
+        return blnFound;
+    }
+
+
 }

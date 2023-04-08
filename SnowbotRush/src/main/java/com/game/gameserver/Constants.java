@@ -9,6 +9,8 @@ public interface Constants {
     public static int START_LIVES = 3;
     public static int MAX_PLAYERS = 2;
     public static int BOARD_SIZE = 10;
+    public static int MAX_NUM_HIGH_SCORE = 5;
+
     public static String[][] GAME_PIECES = {
             {"coins", Choice.POINTS.name(), "10"},
             {"diamonds", Choice.POINTS.name(), "50"},
