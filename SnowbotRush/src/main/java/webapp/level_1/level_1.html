@@ -1,146 +1,715 @@
 <!doctype html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title> GameTable </title>
     <link rel="stylesheet" href="level_1.css">
+    <script src="level_1.js"></script>
+
+    <script>
+        /*functions when user clicks on button, the image will dissapear in that respective square*/
+        function clickedCoin(){
+            if (imgCoin == 1){
+                /* row 0 */
+                document.getElementById("imgCoin00").style.display="inline"
+                document.getElementById("imgCoin01").style.display="inline"
+                document.getElementById("imgCoin02").style.display="inline"
+                document.getElementById("imgCoin03").style.display="inline"
+                document.getElementById("imgCoin04").style.display="inline"
+                document.getElementById("imgCoin05").style.display="inline"
+                document.getElementById("imgCoin06").style.display="inline"
+                document.getElementById("imgCoin07").style.display="inline"
+                document.getElementById("imgCoin08").style.display="inline"
+                document.getElementById("imgCoin09").style.display="inline"
+
+                /* row 3 */
+                document.getElementById("imgCoin30").style.display="inline"
+                document.getElementById("imgCoin31").style.display="inline"
+                document.getElementById("imgCoin32").style.display="inline"
+                document.getElementById("imgCoin33").style.display="inline"
+                document.getElementById("imgCoin34").style.display="inline"
+                document.getElementById("imgCoin35").style.display="inline"
+                document.getElementById("imgCoin36").style.display="inline"
+                document.getElementById("imgCoin37").style.display="inline"
+                document.getElementById("imgCoin38").style.display="inline"
+                document.getElementById("imgCoin39").style.display="inline"
+
+                /* row 6 */
+                document.getElementById("imgCoin60").style.display="inline"
+                document.getElementById("imgCoin61").style.display="inline"
+                document.getElementById("imgCoin62").style.display="inline"
+                document.getElementById("imgCoin63").style.display="inline"
+                document.getElementById("imgCoin64").style.display="inline"
+                document.getElementById("imgCoin65").style.display="inline"
+                document.getElementById("imgCoin66").style.display="inline"
+                document.getElementById("imgCoin67").style.display="inline"
+                document.getElementById("imgCoin68").style.display="inline"
+                document.getElementById("imgCoin69").style.display="inline"
+
+                /* row 9 */
+                document.getElementById("imgCoin90").style.display="inline"
+                document.getElementById("imgCoin91").style.display="inline"
+                document.getElementById("imgCoin92").style.display="inline"
+                document.getElementById("imgCoin93").style.display="inline"
+                document.getElementById("imgCoin94").style.display="inline"
+                document.getElementById("imgCoin95").style.display="inline"
+                document.getElementById("imgCoin96").style.display="inline"
+                document.getElementById("imgCoin97").style.display="inline"
+                document.getElementById("imgCoin98").style.display="inline"
+                document.getElementById("imgCoin99").style.display="inline"
+
+                return imgCoin00 = 0;
+                return imgCoin01 = 0;
+                return imgCoin02 = 0;
+                return imgCoin03 = 0;
+                return imgCoin04 = 0;
+                return imgCoin05 = 0;
+                return imgCoin06 = 0;
+                return imgCoin07 = 0;
+                return imgCoin08 = 0;
+                return imgCoin09 = 0;
+            }else{
+                document.getElementById("imgCoin").style.display="none"
+                return imgCoin00 = 0;
+            }
+                return imgCoin01 = 0;
+                return imgCoin02 = 0;
+                return imgCoin03 = 0;
+                return imgCoin04 = 0;
+                return imgCoin05 = 0;
+                return imgCoin06 = 0;
+                return imgCoin07 = 0;
+                return imgCoin08 = 0;
+                return imgCoin09 = 0;
+
+        }
+
+        function clickedDiamond(){
+            if (imgDiamond == 1){
+                document.getElementById("imgDiamond").style.display="inline"
+                return imgDiamond = 0;
+            }else{
+                document.getElementById("imgDiamond").style.display="none"
+                return imgDiamond = 1;
+            }
+        }
+
+        function clickedSnow(){
+            if (imgSnow == 1){
+                document.getElementById("imgSnow").style.display="inline"
+                return imgSnow = 0;
+            }else{
+                document.getElementById("imgSnow").style.display="none"
+                return imgSnow = 1;
+            }
+        }
+
+    </script>
 </head>
-<body>
+
+<body style = "background-color:lightcyan ">
 <caption title="Game Table"> Game Table </caption>
 <table id="screen"><!-- screen border!-->
     <tr>
-    <td>
-    <table><!-- table that divides screen into 3!-->
-        <tr>
-        <td id="status">
-            <table id="statusBar">
-                <tr>
-                    <td id="statusBar"></td>
-                </tr>
-            </table>
-        </td><!-- status column!-->
-        <td id="player1"><!-- player 1 screen table!-->
-            <table id="player1">
-                <tr>
-                    <td id="square">
-                        <div class="placement">
-                            <img class="coinPlacement" src="assets/coin.png" width="80" height="80" style="padding-left: 20%"/>
-                            <img class="enemy1Placement" onclick="enemyDisappear()" src="assets/enemy1.png" width="80" height="80" style="padding-left: 20%" style="padding-top: 15%"/>
-                        </div>
-                        <!--<img src="assets/coin.png" width="80" height="80" style="padding-left: 20%">!-->
-                    </td>
-                    <td id="square">
-                        <div class="placement">
-                            <img src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
-                            <img class="enemy2Placement" onclick="enemyDisappear()" src="assets/enemy2.png" width="80" height="80" style="padding-left: 20%" style="padding-top: 15%"/>
-                        </div>
-                    </td>
-                    <td id="square">
-                        <div class="placement">
-                            <img src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
-                            <img class="enemy3Placement" onclick="enemyDisappear()" src="assets/enemy1.png" width="80" height="80" style="padding-left: 20%" style="padding-top: 15%"/>
-                        </div>
-                    </td>
-                    <td id="square">
-                        <div class="placement">
-                            <img src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
-                            <img class="enemy1Placement"onclick="enemyDisappear()" src="assets/enemy2.png" width="80" height="80" style="padding-left: 20%" style="padding-top: 15%"/>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td id="square"><img src="assets/diamond.png" width="80" height="80" style="padding-left: 20%"></td>
-                    <td id="square"><img src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%"></td>
-                    <td id="square"><img src="assets/diamond.png" width="80" height="80" style="padding-left: 20%"></td>
-                    <td id="square"><img src="assets/coin.png" width="80" height="80" style="padding-left: 20%"></td>
-                </tr>
-                <tr>
-                    <td id="square"><img src="assets/coin.png" width="80" height="80" style="padding-left: 20%"></td>
-                    <td id="square"><img src="assets/diamond.png" width="80" height="80" style="padding-left: 20%"></td>
-                    <td id="square"><img src="assets/coin.png" width="80" height="80" style="padding-left: 20%"></td>
-                    <td id="square"><img src="assets/diamond.png" width="80" height="80" style="padding-left: 20%"></td>
-                </tr>
-                <tr>
-                    <td id="square"><img src="assets/diamond.png" width="80" height="80" style="padding-left: 20%"></td>
-                    <td id="square"><img src="assets/coin.png" width="80" height="80" style="padding-left: 20%"></td>
-                    <td id="square"><img src="assets/diamond.png" width="80" height="80" style="padding-left: 20%"></td>
-                    <td id="square"><img src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%"></td>
-                </tr>
-                <tr>
-                    <td id="square"><img src="assets/coin.png" width="80" height="80" style="padding-left: 20%"></td>
-                    <td id="square"><img src="assets/diamond.png" width="80" height="80" style="padding-left: 20%"></td>
-                    <td id="square"><img src="assets/coin.png" width="80" height="80" style="padding-left: 20%"></td>
-                    <td id="square"><img src="assets/diamond.png" width="80" height="80" style="padding-left: 20%"></td>
-                </tr>
-                <tr>
-                    <td id="square"><img src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%"></td>
-                    <td id="square"><img src="assets/coin.png" width="80" height="80" style="padding-left: 20%"></td>
-                    <td id="square"><img src="assets/diamond.png" width="80" height="80" style="padding-left: 20%"></td>
-                    <td id="square"><img src="assets/coin.png" width="80" height="80" style="padding-left: 20%"></td>
-                </tr>
-                <table id="scoreBar">
-                <tr>
-                    <td id="scoreBar"><h4>Score: </h4></td>
-                    <td id="scoreBar"><h4>Lives: </h4></td>
-                    <td id="scoreBar"><img src="assets/player1.png" width="75" height="80" style="padding-left: 30%"></td>
-                </tr>
-                </table>
-            </table>
-        </td>
-        <td id="player2"><!-- screen border!-->
-            <table id="player2">
-                <tr>
-                    <td id="square"></td>
-                    <td id="square"></td>
-                    <td id="square"></td>
-                    <td id="square"></td>
-                </tr>
-                <tr>
-                    <td id="square"></td>
-                    <td id="square"></td>
-                    <td id="square"></td>
-                    <td id="square"></td>
-                </tr>
-                <tr>
-                    <td id="square"></td>
-                    <td id="square"></td>
-                    <td id="square"></td>
-                    <td id="square"></td>
-                </tr>
-                <tr>
-                    <td id="square"></td>
-                    <td id="square"></td>
-                    <td id="square"></td>
-                    <td id="square"></td>
-                </tr>
-                <tr>
-                    <td id="square"></td>
-                    <td id="square"></td>
-                    <td id="square"></td>
-                    <td id="square"></td>
-                </tr>
-                <tr>
-                    <td id="square"></td>
-                    <td id="square"></td>
-                    <td id="square"></td>
-                    <td id="square"></td>
-                </tr>
-                <table id="scoreBar">
-                    <tr>
-                        <td id="scoreBar"></td>
-                        <td id="scoreBar"></td>
-                        <td id="scoreBar"></td>
-                    </tr>
-                </table>
+        <td>
+            <table><!-- table that divides screen into 3!-->
 
+                <!-- status column!-->
+                <tr>
+                    <td id="status">
+                        <table id="statusBar">
+                            <tr>
+                                <td id="statusBar"></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <!-- Score bar player 1!-->
+                        <table id="scoreBar">
+                            <tr>
+                                <td id="scoreBar">
+                                    <h4>Score: </h4>
+                                    <input type="text" id="play1Scores" name="player1Scores"><br><br>
+                                </td>
+                                <td id="scoreBar">
+                                    <h4>Lives: </h4>
+                                    <input type="text" id="player1Lives" name="player1Lives"><br><br>
+                                </td>
+                                <td id="scoreBar"><img src="assets/player1.png" width="75" height="80" style="padding-left: 30%"></td>
+                            </tr>
+                        </table>
+
+                        <!-- Score bar player 2!-->
+                        <table id="scoreBar">
+                            <tr>
+                                <td id="scoreBar">
+                                    <h4>Score: </h4>
+                                    <input type="text" id="player2Scores" name="player2Scores"><br><br>
+                                </td>
+                                <td id="scoreBar">
+                                    <h4>Lives: </h4>
+                                    <input type="text" id="player2Lives" name="player2Lives"><br><br>
+                                </td>
+                                <td id="scoreBar"><img src="assets/player2.png" width="75" height="80"  style="padding-left: 30%"></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <!-- Screen table!-->
+                    <table id="player1">
+
+                        <!-- rows and squares of table!-->
+
+                        <!-- rows 0-->
+                        <tr>
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin00" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin01" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin02" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin03" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin04" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin05" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin06" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin07" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin08" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin09" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+                        </tr>
+
+                        <!-- rows 1-->
+                        <tr>
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond10" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond11" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond12" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond13" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond14" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond15" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond16" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond17" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond18" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond19" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+
+                        </tr>
+
+                        <!-- rows 2-->
+                        <tr>
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow20" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow21" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow22" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow23" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow24" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow25" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow26" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow27" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow28" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow29" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                        </tr>
+
+                        <!-- rows 3-->
+                        <tr>
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin11" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin12" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin13" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin14" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin15" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin16" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin17" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin18" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin19" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin10" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+                        </tr>
+
+                        <!-- rows 4-->
+                        <tr>
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond11" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond12" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond13" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond14" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond15" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond16" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond17" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond18" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond19" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond10" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+
+                        </tr>
+
+                        <!-- rows 5-->
+                        <tr>
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow11" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow12" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow13" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow14" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow15" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow16" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow17" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow18" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow19" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow10" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                        </tr>
+
+                        <!-- rows 6-->
+                        <tr>
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin11" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin12" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin13" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin14" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin15" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin16" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin17" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin18" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin19" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin10" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+                        </tr>
+
+                        <!-- rows 7-->
+                        <tr>
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond11" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond12" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond13" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond14" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond15" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond16" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond17" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond18" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond19" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="diamond">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedDiamond()">
+                                <img id="imgdiamond10" src="assets/diamond.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+
+                        </tr>
+
+                        <!-- rows 8-->
+                        <tr>
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow11" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow12" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow13" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow14" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow15" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow16" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow17" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow18" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow19" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="snowflake">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedSnow()">
+                                <img id="imgsnow10" src="assets/snowflake.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                        </tr>
+
+                        <!-- rows 9-->
+                        <tr>
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin11" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin12" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin13" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin14" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin15" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin16" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin17" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin18" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin19" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+
+                            <td id="square" class="coin">
+                                <input type="button" value="Collect" style="background-color: lightcyan; color: black; padding-left:35%; padding-right: 35%;" id="btn" onclick="clickedCoin()">
+                                <img id="imgCoin10" src="assets/coin.png" width="80" height="80" style="padding-left: 20%">
+                            </td>
+                        </tr>
+
+
+
+                        <!-- screen border!-->
+                    </table>
+                </tr>
             </table>
         </td>
-        </tr>
-    </table>
-        </td>
-        </tr>
+    </tr>
 </table>
 
 
 </body>
+
 </html>
