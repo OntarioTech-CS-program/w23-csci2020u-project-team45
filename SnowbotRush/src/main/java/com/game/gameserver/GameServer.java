@@ -14,41 +14,13 @@ import java.util.*;
 @ServerEndpoint(value="/ws/game/")
 public class GameServer {
 
-    private Map<String, String> players = new HashMap<String, String>(); // list of all players and the game room they have joined
-    private List<GameRoom> gameRooms = new ArrayList<>(); // list of all the game rooms
+    private static Map<String, String> players = new HashMap<String, String>(); // list of all players and the game room they have joined
+    private static List<GameRoom> gameRooms = new ArrayList<>(); // list of all the game rooms
 
     @OnOpen
-    public void open(String comm, Session session) throws IOException, EncodeException {
+    public void open(Session session) throws IOException, EncodeException {
         String id = session.getId(); // unique id of the user
-        JSONObject jsonmsg = new JSONObject(comm);
-        String name = (String) jsonmsg.get("name"); // name user has entered for their player
-        if (name != null) {
-            String gameID = players.get(id); // to fetch if the user belongs to any game
-            if (gameID != null) {
-                removeUserFromGame(id,gameID,session);
-            }
-            String level = (String) jsonmsg.get("level");
-            GameRoom gameRoom = findAGameRoomForPlayer(id,name,level);
-            players.put(id, gameRoom.getGameID());
-            if (gameRoom.getNumOfPlayers() == Constants.MAX_PLAYERS) {
-                session.getBasicRemote().sendText("{\"type\": \"info\", \"message\":\"Get Ready, Game Is About To Start!\"}");
-                Set<GameServerHandler> allPlayers = new HashSet<>();
-                for (Session peer : session.getOpenSessions()) {
-                    if (gameRoom.inRoom(peer.getId())) {
-                        allPlayers.add(new GameServerHandler(gameRoom,peer));
-                    }
-                }
-                Iterator iterator = allPlayers.iterator();
-                while (iterator.hasNext()) {
-                    ((GameServerHandler)iterator.next()).run();
-                }
-                gameRoom.setGameStatus(Constants.Status.START);
-            } else {
-                session.getBasicRemote().sendText("{\"type\": \"info\", \"message\":\"Waiting For Player 2 To Connect...\"}");
-            }
-        } else {
-            session.getBasicRemote().sendText("{\"type\": \"error\", \"message\":\"Please provide your player name to play the game.\"}");
-        }
+        session.getBasicRemote().sendText("{\"type\": \"info\", \"message\":\"Welcome! Please enter your user name and select difficulty level to play game.\"}");
     }
 
     @OnClose
@@ -66,8 +38,9 @@ public class GameServer {
         JSONObject jsonmsg = new JSONObject(comm);
         String type = (String) jsonmsg.get("type");
         String error = null;
-
-        if ("select".equalsIgnoreCase(type)) {
+        if ("enter".equalsIgnoreCase(type)) {
+            enterGameRoom(comm,session);
+        } else if ("select".equalsIgnoreCase(type)) {
             String gameID = players.get(userID);
             if (gameID != null) {
                 GameRoom gameRoom = getGameRoom(gameID);
@@ -96,6 +69,41 @@ public class GameServer {
         }
         if (error != null) {
             session.getBasicRemote().sendText(error);
+        }
+    }
+
+    public void enterGameRoom(String comm,Session session) throws IOException, EncodeException {
+        String id = session.getId(); // unique id of the user
+        JSONObject jsonmsg = new JSONObject(comm);
+        String name = (String) jsonmsg.get("name"); // name user has entered for their player
+        if (name != null) {
+            session.getBasicRemote().sendText("{\"type\": \"info\", \"message\":\"Welcome " + name.toUpperCase() +"!\"}");
+            String gameID = players.get(id); // to fetch if the user belongs to any game
+            if (gameID != null) {
+                removeUserFromGame(id,gameID,session);
+            }
+            String level = (String) jsonmsg.get("level");
+            GameRoom gameRoom = findAGameRoomForPlayer(id,name,level);
+            System.out.println(gameRoom.getNumOfPlayers() + ":" + gameRoom.getGameID());
+            players.put(id, gameRoom.getGameID());
+            if (gameRoom.getNumOfPlayers() == Constants.MAX_PLAYERS) {
+                session.getBasicRemote().sendText("{\"type\": \"info\", \"message\":\"Get Ready " + name.toUpperCase() +", Game Is About To Start!\"}");
+                Set<GameServerHandler> allPlayers = new HashSet<>();
+                for (Session peer : session.getOpenSessions()) {
+                    if (gameRoom.inRoom(peer.getId())) {
+                        allPlayers.add(new GameServerHandler(gameRoom,peer));
+                    }
+                }
+                Iterator iterator = allPlayers.iterator();
+                while (iterator.hasNext()) {
+                    ((GameServerHandler)iterator.next()).run();
+                }
+                gameRoom.setGameStatus(Constants.Status.START);
+            } else {
+                session.getBasicRemote().sendText("{\"type\": \"info\", \"message\":\"Waiting For Other Players To Connect...\"}");
+            }
+        } else {
+            session.getBasicRemote().sendText("{\"type\": \"error\", \"message\":\"Please provide your player name to play the game.\"}");
         }
     }
 
@@ -136,10 +144,14 @@ public class GameServer {
         // loop through array list and see if there is any game available for user to join
         // if there is no game room then generate a new game id by calling the game servlet
         // create a new game room and add the user
+        System.out.println(gameRooms.size());
         for (GameRoom gr:gameRooms) {
+            System.out.println(gr.getNumOfPlayers());
             if (gr.getNumOfPlayers() < Constants.MAX_PLAYERS) {
+                System.out.println(gr.isLevel(gameLevel) + " : " + gameLevel);
                 if (gr.isLevel(gameLevel)) {
                     gr.addPlayer(userID,playerName);
+                    System.out.println(playerName);
                     return gr;
                 }
             }
@@ -148,11 +160,12 @@ public class GameServer {
         GameRoom gameRoom = new GameRoom(gameID,gameLevel);
         gameRoom.addPlayer(userID,playerName);
         gameRooms.add(gameRoom);
+        System.out.println(playerName);
         return gameRoom;
     }
 
     public String getGameRoomID() throws IOException {
-        String uriAPI = "http://localhost:8080/SnowbotRush-1.0-SNAPSHOT/api/game-servlet";
+        String uriAPI = "http://localhost:8080/SnowbotRush-1.0-SNAPSHOT/game-servlet";
         URL url = new URL(uriAPI);
         HttpURLConnection con = (HttpURLConnection)url.openConnection();
         con.setRequestMethod("GET");
@@ -169,6 +182,7 @@ public class GameServer {
             while ((responseLine = br.readLine()) != null) {
                 response.append(responseLine.trim());
             }
+            System.out.println(response.toString());
             return response.toString();
         } catch (IOException e) {
             throw new RuntimeException(e);

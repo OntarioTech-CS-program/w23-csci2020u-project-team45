@@ -28,8 +28,7 @@ public class GameResource {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        Response myResp = Response.status(200).header("Access-Control-Allow-Origin", "http://localhost:8448")
-                .header("Content-Type", "application/json")
+        Response myResp = Response.status(200).header("Content-Type", "application/json")
                 .entity(val)
                 .build();
         return myResp;
@@ -37,7 +36,8 @@ public class GameResource {
 
     private String getHighScores(HighScore highScore) {
         List<Map.Entry<String, Long>> values = highScore.getSortedByScore();
-        String data = "{\"type\": \"scores\",\"scores\": [";
+        //String data = "{\"type\": \"scores\",\"scores\": [";
+        String data = "{\"scores\": [";
         boolean blnDelimiter = false;
         int count = 0;
         for (Map.Entry<String, Long> record:values) {
@@ -51,6 +51,7 @@ public class GameResource {
                     blnDelimiter = true;
                 }
                 data += "{";
+                data += "\"rank\": \"" + count + "\",";
                 data += "\"name\": \"" + name + "\",";
                 data += "\"score\": \"" + score.longValue() + "\"";
                 data += "}";

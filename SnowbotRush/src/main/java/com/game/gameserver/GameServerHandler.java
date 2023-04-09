@@ -21,6 +21,11 @@ public class GameServerHandler implements Runnable {
         try {
             String val = getBoard(gameRoom.getGameBoard());
             session.getBasicRemote().sendText(val);
+            for (Session peer : session.getOpenSessions()) {
+                Player player = gameRoom.getPlayer(peer.getId());
+                peer.getBasicRemote().sendText("{\"type\": \"score\", \"message\":\""+ player.getScore() +"\"}");
+                peer.getBasicRemote().sendText("{\"type\": \"lives\", \"message\":\""+ player.getLives() +"\"}");
+            }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

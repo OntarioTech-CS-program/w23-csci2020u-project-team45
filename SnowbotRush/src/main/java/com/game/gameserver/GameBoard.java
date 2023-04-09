@@ -12,17 +12,13 @@ public class GameBoard {
 
     // generating game board dynamically
     private void generateGameBoard() {
-        int row = 0;
-        for (GamePiece[] gprow:gamePieces) {
-            int column = 0;
-            for (GamePiece gp:gprow) {
-                Random random = new Random();
+        Random random = new Random();
+        for (int row=0; row<gamePieces.length; row++) {
+            for (int column=0; column<gamePieces[row].length;column++) {
                 int itemNum = random.nextInt(Constants.Items.values().length);
-                gp = new GamePiece(itemNum);
-                gp.setPosition(row,column);
-                column++;
+                gamePieces[row][column] = new GamePiece(itemNum);
+                gamePieces[row][column].setPosition(row,column);
             }
-            row++;
         }
     }
 

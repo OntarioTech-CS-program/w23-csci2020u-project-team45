@@ -37,7 +37,11 @@ public class PlayerServerHandler implements Runnable {
                     }
                     checkWinner();
                 } else {
-                    session.getBasicRemote().sendText("{\"type\": \"failed\", \"message\":\"Game Piece is already claimed by other player.\"}");
+                    String data = "{\"type\":\"failed\"";
+                    data+=", \"row\":\"" + selection[0] +"\"";
+                    data+=", \"column\":\"" + selection[1] +"\"";
+                    data+=", \"message\":\"Game Piece is already claimed by other player.\"}";
+                    session.getBasicRemote().sendText(data);
                 }
             } else {
                 session.getBasicRemote().sendText("{\"type\": \"lost\", \"message\":\"Sorry, no more lives.\"}");
