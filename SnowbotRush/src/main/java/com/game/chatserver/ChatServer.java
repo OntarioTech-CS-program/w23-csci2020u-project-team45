@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@ServerEndpoint(value="/ws/gamechat/")
+@ServerEndpoint(value="/ws/game-chat/")
 public class ChatServer {
 
     private Map<String, String> usernames = new HashMap<String, String>();
