@@ -1,0 +1,28 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.startBackground {
+    background-image: url("assets/startScreenBackground.png");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.center {
+    padding-top: 190%;
+    padding-left: 220%;
+    display: block;
+    margin: auto;
+}
+
+/*
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}*/
