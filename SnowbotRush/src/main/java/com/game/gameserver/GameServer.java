@@ -20,7 +20,6 @@ public class GameServer {
     @OnOpen
     public void open(Session session) throws IOException, EncodeException {
         String id = session.getId(); // unique id of the user
-        session.getBasicRemote().sendText("{\"type\": \"info\", \"message\":\"Welcome! Please enter your user name and select difficulty level to play game.\"}");
     }
 
     @OnClose
@@ -84,7 +83,6 @@ public class GameServer {
             }
             String level = (String) jsonmsg.get("level");
             GameRoom gameRoom = findAGameRoomForPlayer(id,name,level);
-            System.out.println(gameRoom.getNumOfPlayers() + ":" + gameRoom.getGameID());
             players.put(id, gameRoom.getGameID());
             if (gameRoom.getNumOfPlayers() == Constants.MAX_PLAYERS) {
                 session.getBasicRemote().sendText("{\"type\": \"info\", \"message\":\"Get Ready " + name.toUpperCase() +", Game Is About To Start!\"}");
@@ -144,14 +142,10 @@ public class GameServer {
         // loop through array list and see if there is any game available for user to join
         // if there is no game room then generate a new game id by calling the game servlet
         // create a new game room and add the user
-        System.out.println(gameRooms.size());
         for (GameRoom gr:gameRooms) {
-            System.out.println(gr.getNumOfPlayers());
             if (gr.getNumOfPlayers() < Constants.MAX_PLAYERS) {
-                System.out.println(gr.isLevel(gameLevel) + " : " + gameLevel);
                 if (gr.isLevel(gameLevel)) {
                     gr.addPlayer(userID,playerName);
-                    System.out.println(playerName);
                     return gr;
                 }
             }
@@ -160,7 +154,6 @@ public class GameServer {
         GameRoom gameRoom = new GameRoom(gameID,gameLevel);
         gameRoom.addPlayer(userID,playerName);
         gameRooms.add(gameRoom);
-        System.out.println(playerName);
         return gameRoom;
     }
 
@@ -182,7 +175,6 @@ public class GameServer {
             while ((responseLine = br.readLine()) != null) {
                 response.append(responseLine.trim());
             }
-            System.out.println(response.toString());
             return response.toString();
         } catch (IOException e) {
             throw new RuntimeException(e);

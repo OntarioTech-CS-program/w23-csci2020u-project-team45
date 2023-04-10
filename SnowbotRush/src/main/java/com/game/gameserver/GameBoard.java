@@ -4,9 +4,11 @@ import java.util.Random;
 
 public class GameBoard {
     GamePiece[][] gamePieces;
+    int size;
 
     public GameBoard(Constants.LEVEL level) {
-        gamePieces = new GamePiece[level.getValue()][level.getValue()]; // create the game board size
+        this.size = level.getValue();
+        this.gamePieces = new GamePiece[this.size][this.size]; // create the game board size
         generateGameBoard();
     }
 
@@ -23,17 +25,20 @@ public class GameBoard {
     }
 
     public GamePiece[][] getGamePieces() {
-        return gamePieces;
+        return this.gamePieces;
     }
 
     public GamePiece getGamePiece (int row, int column) {
-        return gamePieces[row][column];
+        return this.gamePieces[row][column];
     }
 
+    public int getSize() {
+        return this.size;
+    }
     public boolean isGameOver() {
         boolean blnGameOver = true;
-        for (int row=0; row<gamePieces.length && !blnGameOver; row++) {
-            for (int column=0; column<gamePieces[row].length && !blnGameOver; column++) {
+        for (int row=0; row<gamePieces.length && blnGameOver; row++) {
+            for (int column=0; column<gamePieces[row].length && blnGameOver; column++) {
                 if (!gamePieces[row][column].isClaimed()) {
                     blnGameOver = false;
                 }

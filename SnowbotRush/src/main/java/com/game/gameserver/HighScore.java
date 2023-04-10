@@ -1,9 +1,6 @@
 package com.game.gameserver;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Stream;
 
 public class HighScore {
@@ -40,7 +37,7 @@ public class HighScore {
     }
 
     public List<Map.Entry<String, Long>> getSortedByScore() {
-        Stream<Map.Entry<String,Long>> sorted = scores.entrySet().stream().sorted(Map.Entry.comparingByValue());
+        Stream<Map.Entry<String,Long>> sorted = scores.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()));
         return sorted.toList();
     }
 }

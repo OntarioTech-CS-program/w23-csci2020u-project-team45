@@ -25,22 +25,11 @@ public class GameServlet extends HttpServlet {
     public String generatingRandomUpperAlphanumericString(int length) {
         String generatedString = RandomStringUtils.randomAlphanumeric(length).toUpperCase();
         // generating unique room code
-        while (games.contains(generatedString)){
+        while (games.contains(generatedString)) {
             generatedString = RandomStringUtils.randomAlphanumeric(length).toUpperCase();
         }
         games.add(generatedString);
 
         return generatedString;
-    }
-
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/plain");
-
-        // send the random code as the response's content
-        PrintWriter out = response.getWriter();
-        out.println(generatingRandomUpperAlphanumericString(5));
-    }
-
-    public void destroy() {
     }
 }

@@ -26,11 +26,11 @@ public class PlayerServerHandler implements Runnable {
                     int value = gamePiece.getValue();
                     if (Constants.Choice.POINTS.equals(choice)) {
                         player.setScore(value);
-                        session.getBasicRemote().sendText("{\"type\": \"score\", \"message\":\""+ player.getScore() +"\"}");
+                        session.getBasicRemote().sendText(getSendMsg("score", gamePiece, player.getScore()));
                         HighScore.getInstance().setHighScore(player.getName(), player.getScore());
                     } else if (Constants.Choice.LIVES.equals(choice)) {
                         player.setLives(value);
-                        session.getBasicRemote().sendText("{\"type\": \"lives\", \"message\":\""+ player.getLives() +"\"}");
+                        session.getBasicRemote().sendText(getSendMsg("lives", gamePiece, player.getLives()));
                         if (!player.hasLives()) {
                             session.getBasicRemote().sendText("{\"type\": \"lost\", \"message\":\"Sorry, no more lives.\"}");
                         }
@@ -49,6 +49,16 @@ public class PlayerServerHandler implements Runnable {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public String getSendMsg(String type, GamePiece gp, long message) {
+        String val = "{\"type\": \"" + type + "\", ";
+        val+= "\"piece\": \"" + gp.getItem() + "\", ";
+        val+= "\"value\": \"" + gp.getValue() + "\", ";
+        val+= "\"row\": \"" + gp.getxPos() + "\", ";
+        val+= "\"column\": \"" + gp.getyPos() + "\", ";
+        val+= "\"message\":\""+ message +"\"}";
+        return val;
     }
 
     public void checkWinner() throws IOException {

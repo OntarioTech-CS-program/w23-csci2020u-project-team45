@@ -19,44 +19,14 @@ public class GameServerHandler implements Runnable {
     public void run() {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            String val = getBoard(gameRoom.getGameBoard());
-            session.getBasicRemote().sendText(val);
-            for (Session peer : session.getOpenSessions()) {
-                Player player = gameRoom.getPlayer(peer.getId());
-                peer.getBasicRemote().sendText("{\"type\": \"score\", \"message\":\""+ player.getScore() +"\"}");
-                peer.getBasicRemote().sendText("{\"type\": \"lives\", \"message\":\""+ player.getLives() +"\"}");
-            }
+            session.getBasicRemote().sendText("{\"type\": \"game\", \"message\":\""+ gameRoom.getGameBoard().getSize() +"\"}");
+            Player player = gameRoom.getPlayer(session.getId());
+            session.getBasicRemote().sendText("{\"type\": \"score\", \"message\":\""+ player.getScore() +"\"}");
+            session.getBasicRemote().sendText("{\"type\": \"lives\", \"message\":\""+ player.getLives() +"\"}");
+            session.getBasicRemote().sendText("{\"type\": \"info\", \"message\":\"Game has started.  All the Best!!!\"}");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public String getBoard(GameBoard gameBoard) {
-        String data = "";
-        boolean blnDelimiter = false;
-        if (gameBoard != null) {
-            GamePiece[][] gamePieces = gameBoard.getGamePieces();
-            data = "{\"type\": \"game\",\"pieces\": [";
-            for (GamePiece[] gprow:gamePieces) {
-                for (GamePiece gp:gprow) {
-                    String piece = gp.getItem();
-                    int x = gp.getxPos();
-                    int y = gp.getyPos();
-                    if (blnDelimiter) {
-                        data += ",";
-                    } else {
-                        blnDelimiter = true;
-                    }
-                    data += "{";
-                    data += "\"piece\": \"" + piece + "\",";
-                    data += "\"row\": \"" + x + "\",";
-                    data += "\"column\": \"" + y + "\"";
-                    data += "}";
-                }
-            }
-            data += "]}";
-        }
-        return data;
     }
 
 }

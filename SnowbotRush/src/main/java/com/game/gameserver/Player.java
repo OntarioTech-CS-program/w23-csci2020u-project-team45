@@ -47,12 +47,13 @@ public class Player {
     }
 
     public void setLives(int lives) {
-        if (this.lives < Constants.START_LIVES) {
-            this.lives += lives;
+        this.lives += lives;
+        if (this.lives > Constants.START_LIVES) {
+            this.lives = Constants.START_LIVES;
         }
     }
 
     public boolean hasLives() {
-        return (lives>0);
+        return (this.lives>0);
     }
 }
