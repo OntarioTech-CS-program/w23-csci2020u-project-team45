@@ -36,6 +36,8 @@ html, body, table {
     border-collapse: collapse;
     mso-table-lspace: 0px;
     mso-table-rspace: 0px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #player2{
@@ -76,8 +78,8 @@ html, body, table {
 }
 .enemy1Placement {
     position: absolute;
-    top: 35px;
-    left: 40px;
+    top: 0px;
+    left: 25px;
 }
 .enemy2Placement {
     position: absolute;

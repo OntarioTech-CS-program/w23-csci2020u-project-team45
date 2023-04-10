@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="SnowbotRush:war">
+    <output-path>$PROJECT_DIR$/SnowbotRush/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>SnowbotRush</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="SnowbotRush-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="SnowbotRush:war exploded" />
+    </root>
+  </artifact>
+</component>

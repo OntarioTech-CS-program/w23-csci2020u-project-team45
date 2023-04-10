@@ -14,36 +14,22 @@ import java.util.Set;
 /**
  * This is a class that has services
  * In our case, we are using this to generate unique room IDs**/
-@WebServlet(name = "playerServlet", value = "/player-servlet")
-public class PlayerServlet extends HttpServlet {
+@WebServlet(name = "gameServlet", value = "/game-servlet")
+public class GameServlet extends HttpServlet {
     private String message;
 
     //static so this set is unique
-    public static Set<String> players = new HashSet<>();
+    public static Set<String> games = new HashSet<>();
 
-    /**
-     * Method generates unique room codes
-     * **/
+    // method generates unique room codes
     public String generatingRandomUpperAlphanumericString(int length) {
         String generatedString = RandomStringUtils.randomAlphanumeric(length).toUpperCase();
         // generating unique room code
-        while (players.contains(generatedString)){
+        while (games.contains(generatedString)) {
             generatedString = RandomStringUtils.randomAlphanumeric(length).toUpperCase();
         }
-        players.add(generatedString);
+        games.add(generatedString);
 
         return generatedString;
-    }
-
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/plain");
-
-        // send the random code as the response's content
-        PrintWriter out = response.getWriter();
-        out.println(generatingRandomUpperAlphanumericString(5));
-
-    }
-
-    public void destroy() {
     }
 }
