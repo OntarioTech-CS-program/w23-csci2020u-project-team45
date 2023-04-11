@@ -14,9 +14,6 @@ public class HighScore {
         if (highScore == null) {
             highScore = new HighScore();
         }
-        highScore.setHighScore("Kate", 200);
-        highScore.setHighScore("Jack", 100);
-        highScore.setHighScore("Sally", 300);
         return highScore;
     }
 
@@ -39,5 +36,9 @@ public class HighScore {
     public List<Map.Entry<String, Long>> getSortedByScore() {
         Stream<Map.Entry<String,Long>> sorted = scores.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()));
         return sorted.toList();
+    }
+
+    public boolean isEmpty() {
+        return scores.isEmpty();
     }
 }

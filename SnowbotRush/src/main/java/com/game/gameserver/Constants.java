@@ -10,6 +10,8 @@ public interface Constants {
     public static int MAX_PLAYERS = 2;
     public static int BOARD_SIZE = 10;
     public static int MAX_NUM_HIGH_SCORE = 5;
+    public static String HIGH_SCORE_DIR = "/gameFiles";
+    public static String HIGH_SCORE_FILE = "highscores.json";
 
     public static String[][] GAME_PIECES = {
             {"coin", Choice.POINTS.name(), "10"},

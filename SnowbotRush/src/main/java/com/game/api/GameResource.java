@@ -1,20 +1,26 @@
 package com.game.api;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.game.gameserver.Constants;
 import com.game.gameserver.HighScore;
+import com.game.util.FileReaderWriter;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.Response;
-import java.util.HashSet;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 @Path("/game")
 public class GameResource {
-    public static Set<String> games = new HashSet<>();
 
     @GET
     @Path("/highscore")
@@ -23,8 +29,11 @@ public class GameResource {
         String val = "";
         //need to create object to build
         try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            val = getHighScores(HighScore.getInstance());
+            HighScore hs = HighScore.getInstance();
+            if(hs.isEmpty()) {
+                getHighScoresFromFile(hs);
+            }
+            val = getHighScores(hs);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -32,6 +41,33 @@ public class GameResource {
                 .entity(val)
                 .build();
         return myResp;
+    }
+
+    public void getHighScoresFromFile(HighScore hs) throws JsonProcessingException {
+        URL url = this.getClass().getClassLoader().getResource(Constants.HIGH_SCORE_DIR);
+        String highScores = "";
+        File mainDir = null;
+        try {
+            mainDir = new File(url.toURI());
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            highScores = FileReaderWriter.readHighScoresFile(mainDir,Constants.HIGH_SCORE_FILE);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode jsonNode = objectMapper.readTree(highScores);
+        Iterator<JsonNode> iterator = jsonNode.elements();
+        while(iterator.hasNext()) {
+            JsonNode js = iterator.next();
+            String name = js.findValue("name").asText();
+            String score = js.findValue("score").asText();
+            hs.setHighScore(name, Long.parseLong(score));
+        }
     }
 
     private String getHighScores(HighScore highScore) {
