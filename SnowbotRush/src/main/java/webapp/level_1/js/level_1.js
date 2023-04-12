@@ -2,6 +2,7 @@
 
 let gamews; // websocket connection object
 let blnGameOver = true;
+let blnFreeze = false;
 
 function startGame() {
     let name = document.getElementById('name').value;
@@ -53,7 +54,7 @@ function enterGame(){
             showMessage(message.type,message.message);
         } else if (message.type == "game") {
             displayGameBoard(message.message);
-        } else if (message.type == "score" || message.type == "lives") {
+        } else if (message.type == "points" || message.type == "lives" || message.type == "freeze") {
             changeImage(message);
         } else if (message.type == "failed") {
             showMessage(message.type,message.message);
@@ -84,7 +85,7 @@ function sendPlayerData(name,level) {
 }
 
 function sendClick(row,column) {
-    if (!blnGameOver) {
+    if (!blnGameOver && !blnFreeze) {
         let request = {"type": "select", "row": row, "column": column};
         gamews.send(JSON.stringify(request));
     }
@@ -122,8 +123,10 @@ function displayGameBoard(size) {
 }
 
 function changeImage(data) {
-    let inputBox = document.getElementById(data.type);
-    inputBox.value = data.message;
+    if (data.type == "points" || data.type == "lives") {
+        let inputBox = document.getElementById(data.type);
+        inputBox.value = data.message;
+    }
     if (data.piece) {
         let img = document.getElementById("cover_"+data.row+"_"+data.column);
         img.src = "assets/"+data.piece+".png";
@@ -131,16 +134,37 @@ function changeImage(data) {
         img.height = img.height - 12;
         img.removeAttribute("onclick");
         let msgText = data.value;
-        if (data.type == "score") {
+        if (data.type == "points") {
             msgText += " points";
-        } else {
+        } else if (data.type == "lives"){
             msgText += " life";
+        } else {
+            msgText = "frozen";
         }
         let cell = document.getElementById("cell_"+data.row+"_"+data.column);
         let divCell = document.createElement("div");
         divCell.setAttribute("class","centered");
         divCell.innerHTML = msgText;
         cell.appendChild(divCell);
+        let snowbot = document.getElementById("snowbot");
+        let glow = "green";
+        let timeout = 500;
+        if (data.value == 1) {
+            glow = "blue";
+        } else if (data.value == -1) {
+            glow = "red";
+        } else if (data.type == "freeze") {
+            glow = "freeze";
+            msgText = "You are now frozen for "+data.value+" seconds";
+            timeout = data.value*1000;
+            blnFreeze = true;
+        }
+        snowbot.src="assets/snowbot_"+glow+".png";
+        setTimeout(
+            function () {
+                snowbot.src="assets/snowbot.png";
+                blnFreeze = false;
+            }, timeout);
         showMessage("info",msgText);
     }
 }

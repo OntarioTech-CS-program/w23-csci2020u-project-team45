@@ -26,7 +26,7 @@ public class PlayerServerHandler implements Runnable {
                     int value = gamePiece.getValue();
                     if (Constants.Choice.POINTS.equals(choice)) {
                         player.setScore(value);
-                        session.getBasicRemote().sendText(getSendMsg("score", gamePiece, player.getScore()));
+                        session.getBasicRemote().sendText(getSendMsg("points", gamePiece, player.getScore()));
                         HighScore.getInstance().setHighScore(player.getName(), player.getScore());
                     } else if (Constants.Choice.LIVES.equals(choice)) {
                         player.setLives(value);
@@ -34,6 +34,8 @@ public class PlayerServerHandler implements Runnable {
                         if (!player.hasLives()) {
                             session.getBasicRemote().sendText("{\"type\": \"lost\", \"message\":\"Sorry, no more lives.\"}");
                         }
+                    } else if (Constants.Choice.FREEZE.equals(choice)) {
+                        session.getBasicRemote().sendText(getSendMsg("freeze", gamePiece, gamePiece.getValue()));
                     }
                     checkWinner();
                 } else {
