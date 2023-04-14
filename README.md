@@ -23,7 +23,7 @@ Players may also use with the in-game chat functionality.
 ## Interface and main functionalities
 The screenshots below will help describe the interface and main functionalities of the game.
 
-![](SnowbotRush/Interface_Screenshots/Main_Game_PlayerFareeha_FrozenRobot.png)
+![](Interface_Screenshots/Main_Game_PlayerFareeha_FrozenRobot.png)
 
 
 
