@@ -12,24 +12,24 @@ body, html {
     background-size: cover;
 }
 
-.playGamePosition {
-    padding-top: 110%;
-    padding-left: 155%;
-    display: block;
-    margin: auto;
-}
-
-.gameRulesPosition {
-    padding-bottom: 50%;
-    padding-left: 155%;
-    display: block;
-    margin: auto;
-}
-
-/*
-.centered {
+/*centering the PlayGame and GameRules buttons to be aligned on any screen size*/
+.centerPlayGame{
+    margin: 0;
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
+    -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-}*/
+}
+
+.centerGameRules{
+    margin: 0;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+
+

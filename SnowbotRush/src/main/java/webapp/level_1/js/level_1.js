@@ -4,6 +4,12 @@ let gamews; // websocket connection object
 let blnGameOver = true;
 let blnFreeze = false;
 
+//function to link home button to the home page
+function homeButton(){
+   window.location.href = "https://www.google.com/"; //placeholder link
+}
+
+
 function startGame() {
     let name = document.getElementById('name').value;
     let level = document.getElementById('level').value;
