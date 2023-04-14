@@ -29,7 +29,7 @@ Figure 1 displays the front page of the game, which players will see once succes
 
 #### Figure 2
 Figure 2 displays the gameRules.html file which will display if the player clicks on the "Game Rules" button on the index.html page.
-![](Interface_Screenshots/SnowBotRush_GameRulesPage.PNG)
+![](Interface_Screenshots/SnowBotRush_GameRulesPage.png)
 
 #### Figure 3
 Figure 3 shows the main game interface. There will be a "waiting" buffer on the page if another player has not joined the same level in a different tab. The game will not start unless there are 2 players playing at the same level.
