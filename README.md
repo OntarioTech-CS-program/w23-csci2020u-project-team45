@@ -23,15 +23,26 @@ Players may also use with the in-game chat functionality.
 ## Interface and main functionalities
 The screenshots below will help describe the interface and main functionalities of the game.
 
-![](Interface_Screenshots/SnowBotRush_FrontPage.png)
+#### Figure 1
+Figure 1 displays the front page of the game, which players will see once successfuly running the index.html file. You can click on the "Play Game" or "Game Rules" button.
+![](Interface_Screenshots/SnowBotRush_FrontPage.PNG)
 
-![](Interface_Screenshots/SnowBotRush_GameRulesPage.png)
+#### Figure 2
+Figure 2 displays the gameRules.html file which will display if the player clicks on the "Game Rules" button on the index.html page.
+![](Interface_Screenshots/SnowBotRush_GameRulesPage.PNG)
 
-![](Interface_Screenshots/SnowBotRush_MainGame_Loading.png)
+#### Figure 3
+Figure 3 shows the main game interface. There will be a "waiting" buffer on the page if another player has not joined the same level in a different tab. The game will not start unless there are 2 players playing at the same level.
+![](Interface_Screenshots/SnowBotRush_MainGame_Loading.PNG)
 
+#### Figure 4
+Figure 4 shows the player "Fareeha" who has selected the "Easy" difficulty level. The game board is rendered. In this instance "Fareeha" selected a question mark square which unveiled a "bad" incicle asset. The robot character is now frozen. This is also displayed in the game message text box. There is also a high score display. "Kate", "Sally" and "Jack" are placeholders for reference. Only the top 5 players are showcased on the High Score board. The "Chat With Other Players!" chat box also shows a conversation between players "Fareeha" and "Sara". Also, player "Fareeha" selected on many boxes which display orange "X" symbols. That is because player "Sara" has already selected those on her interface as shown in Figure 5.
 ![](Interface_Screenshots/Main_Game_PlayerFareeha_FrozenRobot.png)
 
+#### Figure 5
+Figure 5 shows the interface of player "Sara", who is playing against player "Fareeha" in a different tab.
 ![](Interface_Screenshots/MainGame_Player2Sara_FrozenRobot.png)
+
 
 
 
