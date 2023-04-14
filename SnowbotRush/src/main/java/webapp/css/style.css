@@ -30,6 +30,19 @@ body, html {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
-
-
-
+.button {
+    background-color: lightcyan;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+#How-to-Play-Header {
+    font-family: Stencil;
+    position: center;
+}
