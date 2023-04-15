@@ -51,8 +51,91 @@ Figure 5 shows the interface of player "Sara", who is playing against player "Fa
 ### In-course concept implementation
 Below is detailed description of various concepts implemented within this project that include the course concepts
 which we were taught throughout the semester:
-- 
-- 
+#### 1. REST API
+* In the GameResource class, we implemented the API call to retrieve high scores (path: api/game/highscore).
+* JSON format was used to exchange data for the high scores of the top 5 players.
+* The first call to the API will result in lazy loading of the high scores from the file saved on the server.
+* On client side, the API call to get high scores was set to be invoked every 60 seconds, and this is to refresh the high scores.
+
+#### 2. Files (File, PrintWriter, FileReader, BufferedReader, InputStreamReader)
+* The InputStreamReader and BufferedReader classes are used in the GameServer class to read the responses from theh servlet.
+* In the GameServlet class, it uses the PrintWriter to send responses in "text/plain" format.
+  FileReaderWriter.java
+* This class uses FileReader and BufferedReader to read from the file from the server resource folder and PrintWriter to write into the resource file on the server for the player scores.
+* This class has functionality to read an existing file, create a new file, or delete a file.
+
+#### 3. Open Data (JSON)
+* Used Jackson library to manage the JSON data (classes implemented: ObjectMapper, JsonNode, JsonProcessingException).
+* We have a JSON File where high scores are read and written from (file name: highscores.json).
+* In the PlayerServerHandler class, it sends information to teh client in a JSON format. For example, sending information on the type of game piece selected by the player on the game board, informing the client if they have won or lost the game, sending the current score and number of lives the player has, etc.
+
+#### 4. URL and URL Connections - Reading Data from our API (HTTP URL Connection)
+* We implemented the ClassLoader to get server resource such as the JSON File that holds the high scores.
+* The GameServer class makes an HTTP call to a servlet (path: /game-servlet) to retrieve a unique game ID, and the content type is in a "text/plain" format.
+
+#### 5. Socket Programming & Web Sockets in Java
+ChatServer.java
+* The chat functionality was implemented using web sockets, where all the players can interact with each other.
+* The web socket implements the OnOpen, OnClose, and OnMessage connections
+* JSON format is used to exchange information between the client and server. For example, the client passing the player name, client sending the chat messages, server broadcasting chat messages to other players, and server informing about the player's entering and exiting the chat.
+
+GameServer.java
+* The second web socket class (GameServer.java) was created to manage the game that includes OnOpen, OnClose, and OnMessage methods that were implemented.
+* It holds a list of all the game rooms and all the players.
+* It implements the functionality for creating a new game room, adding players to a game room, managing user selections, and invoking threads, and overall interactions with the player while the game is running.
+* JSON format is used to exchange information between the client and server. For example, server sending error or information messages to client, client sending the selected game piece, server notifying the client about their score and lives, server informing client about the type of game piece selected and the action required, client implementing the responses based on the server responses, etc.
+* The GameServer class invokes the servlet to retrieve a unique 5 character game ID.
+
+#### 6. Parallel Programming/Multi-threading (Runnable, Concurrency Model: Reactive & Parallel Worker)
+GameServeHandler.java
+* This class implements the Runnable interface.
+* It is used to manage a game room and is invoked in a parallel worker concurrency model. For example, sending the game board to all the players in the game.
+
+PlayerServerHandler.java
+* This class implements the Runnable interface.
+* This class is used to take action on user selections on the game board, and direct the client on the responses to those actions.
+* Depending on the player selection of the game pieces, this class manages the interactions via the reactive concurrency model.
+
+#### 7. Servlets
+GameServlet.java
+* This class is used to generate a unique 5 character alphanumeric game code.
+* It implements the HTTP doGet() and destroy() method
+* The destroy method is invoked when the server is shut down, and used to save the latest game scores of the players in a JSON format to a file on the server.
+
+#### 8. User Interfaces
+HTML & CSS Files
+* Separate HTML files created for the home page, game page, and game rules page
+* CSS was used to set the look and feel of the game
+
+Javascript Files
+* Using web sockets it opens connections, closes connections, and sends messages to exchange information with server in JSON format.
+* It validates the inputs from the player. For example, has the user entered their username.
+* Depending on the server responses, it invokes different types of methods to implement various actions. For example, display information messages, display chat messages, change images on screen, display high scores, display user score and lives, etc.
+* It uses functions like setInterval to invoke a function at a regular frequency, such as calling an api to retrieve the top 5 high scores every 60 seconds.
+* It uses functions like setTimeout to execute a function after a delay, such as changing the character image back to original after half a second.
+* It uses dynamic html functions to create the game board, display images, or change images, etc.
+
+#### 9. Coding Best Practices
+* Defensive Programming: checking for null, well-formatted code, commented for easy understanding, followed the maven structure, used constants and enums, lazy loading, etc.
+* In the FileReaderWriter class, before performing file operations, the code does various types of checks. For example, if the file exists, the file instance is not null, the file is successfully created, etc.
+* Throughout the code, null checks have been implemented before applying any type of operation on the variables or objects. For example, validate if the user has provided their name, check if the game ID is not null before accessing the game room object, in the client side it checks if the web socket connection is not null and active before closing the connection, etc.
+
+Design Patterns - Singleton Class
+HighScore.java
+* This class was implemented as a singleton to hold the scores of all players.
+* A single instance of this class is required to hold the scores of all players and can be accessed throughout the application.
+* For example, used by API to retrieve the top 5 player high scores, used by the thread PlayerServerHandler to save player scores.
+
+Constants
+* To improve the code maintainability, various constants were created to be used throughout the application.
+* For example, type of game pieces, maximum number of players allowed in a game, number of high scores to be displayed, lives a player starts with, etc.
+
+#### 10. Miscellaneous:
+* Various types of collections were used - Map: HashMap, Set, List: ArrayList, Iterator, etc.
+* In the GameBoard class, we used the Random class to generate numbers to randomly place game pieces on the game board
+* In the GamePiece class, it contains data members and respective getter and setter methods for the game pieces.
+* In the GameServlet class, we used RandomStringUtils to generate unique alphanumeric code for the game.
+* In the Player class, it contains data members and respective getter and setter methods for player information.
 
 ## How To Clone and Run Application
 1. Clone repository using the GitHub repository link by using the command: git clone.

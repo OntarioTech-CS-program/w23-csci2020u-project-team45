@@ -55,6 +55,6 @@ public class Player {
 
     // method to check if the player has lives
     public boolean hasLives() {
-        return (this.lives>=0);
+        return (this.lives>0);
     }
 }
